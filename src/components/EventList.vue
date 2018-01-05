@@ -1,23 +1,22 @@
 <template>
   <v-layout row>
     <v-flex>
-      <v-card>
-        <v-list>
-          <v-list-tile v-for="event in events" v-bind:key="event.id">
-            <v-list-tile-content>
-              <v-list-tile-title>{{event.name}}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </v-list>
-      </v-card>
+      <v-expansion-panel>
+        <v-expansion-panel-content v-for="event in events" :key="event.RECORD_ID">
+          <div slot="header">{{event.RECORD_ID}}</div>
+          <v-card>
+            <v-card-text>{{event.RECORD_ID}}</v-card-text>
+          </v-card>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    events: [{ id: 1, name: "test1" }, { id: 2, name: "test2" }]
-  })
+  props: {
+    events: Array
+  }
 };
 </script>
