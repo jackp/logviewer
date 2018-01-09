@@ -1,14 +1,19 @@
 <template>
   <v-layout row>
     <v-flex>
-      <v-expansion-panel>
-        <v-expansion-panel-content v-for="event in events" :key="event.RECORD_ID">
-          <div slot="header">{{event.RECORD_ID}}</div>
+      <v-data-iterator
+        content-tag="v-expansion-panel"
+        :items="events"
+        expand
+        loading="primary"
+      >
+        <v-expansion-panel-content slot="item" slot-scope="props" :key="props.item.RECORD_ID">
+          <div slot="header">{{props.item.RECORD_ID}}</div>
           <v-card>
-            <v-card-text>{{event.RECORD_ID}}</v-card-text>
+            <v-card-text>{{props.item.RECORD_ID}}</v-card-text>
           </v-card>
         </v-expansion-panel-content>
-      </v-expansion-panel>
+      </v-data-iterator>
     </v-flex>
   </v-layout>
 </template>

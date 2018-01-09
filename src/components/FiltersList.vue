@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer permanent floating>
+  <v-navigation-drawer fixed permanent clipped stateless app width="200">
     <v-list dense expand>
       <v-subheader>Cities</v-subheader>
       <v-list-group v-for="(devices, city) in filters" :key="city" no-action>

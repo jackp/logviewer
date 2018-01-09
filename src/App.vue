@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- App Header -->
-    <v-toolbar app fixed dark color="primary">
+    <v-toolbar app fixed clipped-left dark color="primary">
       <v-toolbar-title>CIVIQ</v-toolbar-title>
         <v-menu
           lazy
@@ -58,12 +58,12 @@
           </v-date-picker>
         </v-menu>
     </v-toolbar>
+    <filters-list :events="events"/>
     <v-content>
       <v-container fluid>
         <v-layout row>
-          <v-flex xs2><filters-list :events="events"/></v-flex>
           <v-flex xs8><event-list :events="events"/></v-flex>
-          <v-flex xs2></v-flex>
+          <v-flex xs2><statistics-list :events="events"/></v-flex>
         </v-layout>
       </v-container>
     </v-content>
@@ -75,11 +75,13 @@ import moment from 'moment';
 import config from './config';
 import EventList from "./components/EventList";
 import FiltersList from './components/FiltersList';
+import StatisticsList from './components/StatisticsList';
 
 export default {
   components: {
     EventList,
-    FiltersList
+    FiltersList,
+    StatisticsList
   },
   created: async function () {
     this.events = await this.getEventData();
